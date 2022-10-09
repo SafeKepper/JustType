@@ -21,50 +21,14 @@
     </div>
     <script src="javascript.js"></script>\
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script type="module" src="/jquery-cookie-master/src/jquery.cookie.js"></script>
+    <script type="module" src="./jquery-cookie-master/src/jquery.cookie.js"></script>
     <script type="module">
-        import '/save-as-you-type/source/sayt.min.jquery.js'
+        import './jquery-count-chars/src/jquery.count-chars.js'
 
         $(function () {
 
-            /**
-             * When building your forms, you MUST make sure your form has an ID, and that it's unique
-             * on the application.
-             *
-             * Ie, don't call all forms 'id="form"', even if they are on seperate pages.
-             */
-
-            /*
-             * Attach to a form with default settings
-             */
             $('#freeform').sayt();
-
-
-            /*
-             * Attach to a form with custom settings
-             *
-             * Autosave disabled (Must use manual save to save anything)
-             * Autorecover disabled (Must use a manual recover to recover anything)
-             * Days 7 (Keeps the save cookie for 7 days)
-             */
             $('#freeform').sayt({ 'autosave': true, 'autorecover': false, 'days': 7 });
-
-            /*
-             * Override form id so multiple forms can share one save.
-             * Useful for initialyzing fields in multiple forms or on different pages
-             * Or "wizard" style forms where an initial form's values are carried forward
-             * to the next form in the sequence.
-             * 
-             * Example:
-             * The first line will remember the fields typed in the first blank form of class "form_class".
-             * The second and third line will remember the state of a specific form.
-             *
-             * When the second blank form is opened it is first initialized with "form_class" 
-             * and then by its own specific id which being blank does nothing but take on the 
-             * initial values.
-             * From then on each form remembers it's own values because the second line always 
-             * overwrites the first line.
-             */
             $('.form_class').sayt({ 'id': 'common' });  //class specific cookie id = prefix + 'common'
             $('#freeform_1').sayt();                     //id specific cookie id = prefix + 'form_id_1'
             $('#freeform_2').sayt();                     //id specific cookie id = prefix + 'form_id_2'
